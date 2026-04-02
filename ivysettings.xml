@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivysettings>
+    <!-- SVN resolver not needed for local builds
     <typedef name="svn" classname="fm.last.ivy.plugins.svnresolver.SvnResolver"/>
+    -->
 
     <properties file="local.properties"/>
 
@@ -46,12 +48,13 @@
             <artifact pattern="${ivy.settings.dir}/build/repository/[module]/[type]s/[artifact]-[revision].[ext]"/>
         </filesystem>
 
-        <!-- This resolver is used by the build to automatically publish artifacts to svn -->
+        <!-- SVN publishing resolver not needed for local builds
         <svn name="private" repositoryRoot="svn+ssh://zutubi.com/svnroot" binaryDiff="false"
              userName="${svn.user.name}" userPassword="${svn.user.password}">
             <ivy pattern="repository/[organisation]/[module]/ivy-[revision].xml"/>
             <artifact pattern="repository/[organisation]/[module]/[type]s/[artifact]-[revision].[ext]"/>
         </svn>
+        -->
 
     </resolvers>
 

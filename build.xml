@@ -64,7 +64,9 @@
     <target name="buildlist" depends="init">
         <ivy:buildlist reference="build.path" onMissingDescriptor="skip">
             <fileset dir="${project.root.dir}" includes="*/build.xml"/>
-            <fileset dir="${project.root.dir}/bundles" includes="*/build.xml"/>
+            <!-- CVS bundle excluded: requires unavailable netbeans cvsclient 5.5 -->
+            <fileset dir="${project.root.dir}/bundles" includes="*/build.xml"
+                     excludes="com.zutubi.pulse.core.scm.cvs/build.xml"/>
         </ivy:buildlist>
     </target>
 
@@ -202,7 +204,7 @@
         <antcall target="nsis.dev"/>
 
     </target>
-    
+
 
     <target name="nsis.dev" if="run.nsis">
         <property name="package.name.dev" value="pulse-dev-${pulse.version}"/>
@@ -292,7 +294,7 @@
             <fileset dir="${package.root.slave}/bin"/>
             <mapper type="glob" from="*.in" to="*"/>
         </move>
-        
+
         <move todir="${package.root.slave}/bin">
             <fileset dir="${package.root.slave}/bin">
                 <include name="**/PulseService*"/>
@@ -447,7 +449,7 @@
                 <replacestring from="PulseService" to="PulseServer"/>
             </filtermapper>
         </move>
-      
+
         <copy todir="${version.root.master}/system/packages">
             <fileset dir="build">
                 <include name="pulse-agent-*"/>
