@@ -34,20 +34,20 @@ def processIvyFiles(dir, handler):
                 xml.sax.parse(ivyFile, handler)
         if 'build' in dirs:
             dirs.remove('build')
-    
+
 
 def main():
     scriptDir = os.path.dirname(sys.argv[0])
     topDir = os.path.dirname(scriptDir)
     bundlesDir = os.path.join(topDir, "bundles")
     packageDir = os.path.join(topDir, "package")
-    processIvyFiles(packageDir, PackageHandler())    
-    processIvyFiles(bundlesDir, BundleHandler())    
+    processIvyFiles(packageDir, PackageHandler())
+    processIvyFiles(bundlesDir, BundleHandler())
     unpackaged = allPlugins - packagedPlugins - IGNORED_PLUGINS
     for plugin in unpackaged:
-        print plugin
+        print(plugin)
     sys.exit(len(unpackaged))
-    
+
 
 if __name__ == "__main__":
     main()
