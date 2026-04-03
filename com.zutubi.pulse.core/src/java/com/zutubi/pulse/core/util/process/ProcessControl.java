@@ -48,7 +48,7 @@ public class ProcessControl
     {
         if (!initialised)
         {
-            javasysmonAvailable = new JavaSysMon().supportedPlatform();
+            javasysmonAvailable = false; // new JavaSysMon().supportedPlatform();
             LOG.finest("javasysmon is " + (javasysmonAvailable ? "" : "NOT ") + "available");
 
             if (SystemUtils.IS_WINDOWS)

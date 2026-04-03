@@ -19,6 +19,14 @@ public class PatchMetadata
     private List<FileStatus> fileStatuses;
 
     /**
+     * Hack to fix PatchMetadataTest failures.
+     */
+    public PatchMetadata()
+    {
+        this.fileStatuses = new LinkedList<FileStatus>();
+    }
+
+    /**
      * Creates metadata to go in a patch archive.
      *
      * @param fileStatuses information about changed files in this patch
