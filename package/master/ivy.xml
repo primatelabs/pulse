@@ -7,7 +7,7 @@
         <conf name="release" description="Defines those packages that are included in the final release."/>
         <conf name="internal-bundles" description="Internal bundles required by Pulse."/>
         <conf name="prepackaged-bundles" description="Prepackaged bundles required by Pulse."/>
-        <conf name="build" extends="*" description="Modules that must be built when packaging this module."/>
+        <conf name="build" extends="release,internal-bundles,prepackaged-bundles" description="Modules that must be built when packaging this module."/>
         <conf name="src" description="The source packages included as part of the source release"/>
     </configurations>
 
