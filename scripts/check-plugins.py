@@ -9,7 +9,8 @@ import sys
 import xml.sax
 import xml.sax.handler
 
-IGNORED_PLUGINS = set(["com.zutubi.pulse.core.postprocessors.test"])
+IGNORED_PLUGINS = set(["com.zutubi.pulse.core.postprocessors.test",
+                        "com.zutubi.pulse.core.scm.cvs"])
 
 allPlugins = set()
 packagedPlugins = set()

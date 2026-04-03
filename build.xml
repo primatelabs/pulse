@@ -791,6 +791,8 @@
                     <include name="*/build.xml"/>
                     <include name="bundles/*/build.xml"/>
                     <include name="package/*/build.xml"/>
+                    <!-- CVS bundle excluded: requires unavailable netbeans cvsclient 5.5 -->
+                    <exclude name="bundles/com.zutubi.pulse.core.scm.cvs/build.xml"/>
                 </fileset>
             </ivy:buildlist>
         </sequential>
