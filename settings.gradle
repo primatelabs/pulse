@@ -2,3 +2,4 @@ rootProject.name = 'pulse'
 
 include 'com.zutubi.util'
 include 'com.zutubi.i18n'
+include 'com.zutubi.validation.annotations'

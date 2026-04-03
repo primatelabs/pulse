@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group = 'zutubi'
+version = '2.7.0-dev'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+sourceSets {
+    main {
+        java { srcDirs = ['src/java'] }
+        resources {
+            srcDirs = ['src/java']
+            exclude '**/*.java'
+        }
+    }
+}
