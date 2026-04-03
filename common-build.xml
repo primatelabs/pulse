@@ -135,6 +135,12 @@
                 <exclude name="**/PostProcessCommandTest.java"/>
                 <exclude name="**/*Perforce*Test*"/>
                 <exclude name="**/AcegiLdapManagerTest*"/>
+                <exclude name="**/FreemarkerBuildResultRendererTest*"/>
+                <exclude name="**/Maven*"/>
+                <exclude name="**/GitClientTest*"/>
+                <exclude name="**/GitSubmodulesTest*"/>
+                <exclude name="**/MercurialClientTest*"/>
+                <exclude name="**/MercurialPatchFormatTest*"/>
             </fileset>
         </path>
 
