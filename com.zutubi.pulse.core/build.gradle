@@ -43,15 +43,36 @@ dependencies {
     implementation project(':com.zutubi.i18n')
     implementation project(':com.zutubi.validation')
     implementation project(':com.zutubi.validation.annotations')
+    implementation project(':com.zutubi.tove')
     implementation project(':com.zutubi.tove.annotations')
     implementation 'com.google:com.google.guava:18.0'
+    implementation 'zutubi:boot:2.1'
+    implementation 'zutubi:diff:3.0.3'
     implementation 'zutubi:events:3.0.2'
+    implementation 'org.apache.ant:org.apache.ant:1.6.5'
+    implementation 'org.apache.commons:org.apache.commons.cli:1.0.0'
+    implementation 'org.apache.xmlrpc:org.apache.xmlrpc:2.0.1'
+    implementation 'org.apache.ant:org.apache.ivy:2.0.0'
+    implementation 'org.apache.commons:org.apache.commons.httpclient:3.1.0'
+    implementation 'com.sshtools:com.sshtools.j2ssh:0.2.7'
+    implementation 'com.opensymphony.xwork:com.opensymphony.xwork:1.2.3'
+    implementation 'javax.mail:javax.mail:1.4.0'
+    implementation 'sun:sjsxp:1.0.1'
+    implementation 'org.springframework:org.springframework.core:3.0.5.RELEASE'
+    implementation 'org.springframework:org.springframework.beans:3.0.5.RELEASE'
+    implementation 'org.springframework:org.springframework.context:3.0.5.RELEASE'
+    implementation 'org.springframework:org.springframework.expression:3.0.5.RELEASE'
+    implementation 'org.springframework:org.springframework.context.support:3.0.5.RELEASE'
+    implementation 'net.sourceforge.cglib:net.sf.cglib:2.1.3'
     implementation 'nu.xom:nu.xom:20111125'
-    implementation 'org.springframework.security:org.springframework.security.core:3.0.5.RELEASE'
-    implementation 'org.springframework.security:org.springframework.security.acls:3.0.5.RELEASE'
-    implementation 'org.springframework:org.springframework.ldap:1.3.0.RELEASE'
+    implementation 'com.thoughtworks.xstream:com.thoughtworks.xstream:1.4.2'
+    implementation 'thoughtworks:javasysmon:0.3.4'
+    implementation 'sun:jna:4.1.0'
+    implementation 'eclipse:equinox:3.3'
+    implementation 'eclipse:equinox-bundles:3.3_2'
     testImplementation project(path: ':com.zutubi.util', configuration: 'testOutput')
     testImplementation project(path: ':com.zutubi.validation', configuration: 'testOutput')
+    testImplementation project(path: ':com.zutubi.tove', configuration: 'testOutput')
     testImplementation 'org.junit:org.junit:4.8.2'
     testImplementation 'org.mockito:org.mockito:1.5.0'
     testImplementation 'org.hamcrest:org.hamcrest:1.3'
