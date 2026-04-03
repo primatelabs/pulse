@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+}
+
+group = 'zutubi'
+version = '2.7.0-dev'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+sourceSets {
+    main {
+        java { srcDirs = ['src/java'] }
+        resources {
+            srcDirs = ['src/java']
+            exclude '**/*.java'
+        }
+    }
+    test {
+        java { srcDirs = ['src/test'] }
+        resources {
+            srcDirs = ['src/test']
+            exclude '**/*.java'
+        }
+    }
+}
+
+repositories {
+    ivy {
+        url = uri("${rootProject.projectDir}/repository")
+        patternLayout {
+            ivy '[organisation]/[module]/ivy-[revision].xml'
+            artifact '[organisation]/[module]/jars/[artifact]-[revision].[ext]'
+        }
+        metadataSources { ivyDescriptor() }
+    }
+}
+
+dependencies {
+    implementation 'com.google:com.google.guava:18.0'
+    testImplementation 'org.junit:org.junit:4.8.2'
+    testImplementation 'org.mockito:org.mockito:1.5.0'
+    testImplementation 'org.hamcrest:org.hamcrest:1.3'
+}
