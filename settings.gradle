@@ -1,3 +1,4 @@
 rootProject.name = 'pulse'
 
 include 'com.zutubi.util'
+include 'com.zutubi.i18n'
