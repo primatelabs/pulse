@@ -1,0 +1,93 @@
+plugins {
+    id 'java'
+}
+
+group = 'zutubi'
+version = '2.7.0-dev'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+sourceSets {
+    main {
+        java { srcDirs = ['src/java'] }
+        resources {
+            srcDirs = ['src/java']
+            exclude '**/*.java'
+        }
+    }
+    test {
+        java { srcDirs = ['src/test'] }
+        resources {
+            srcDirs = ['src/test']
+            exclude '**/*.java'
+        }
+    }
+}
+
+repositories {
+    ivy {
+        url = uri("${rootProject.projectDir}/repository")
+        patternLayout {
+            ivy '[organisation]/[module]/ivy-[revision].xml'
+            artifact '[organisation]/[module]/jars/[artifact]-[revision].[ext]'
+        }
+        metadataSources { ivyDescriptor() }
+    }
+}
+
+dependencies {
+    implementation project(':com.zutubi.util')
+    implementation project(':com.zutubi.i18n')
+    implementation project(':com.zutubi.validation')
+    implementation project(':com.zutubi.validation.annotations')
+    implementation project(':com.zutubi.tove')
+    implementation project(':com.zutubi.tove.annotations')
+    implementation project(':com.zutubi.pulse.core')
+    implementation 'com.google:com.google.guava:18.0'
+    implementation 'zutubi:boot:2.1'
+    implementation 'zutubi:events:3.0.2'
+    implementation 'org.apache.xmlrpc:org.apache.xmlrpc:2.0.1'
+    implementation 'org.apache.commons:org.apache.commons.codec:1.3.0'
+    implementation 'org.apache.commons:org.apache.commons.collections:3.2.0'
+    implementation 'com.opensymphony.xwork:com.opensymphony.xwork:1.2.3'
+    implementation 'org.springframework:org.springframework.beans:3.0.5.RELEASE'
+    implementation 'org.springframework:org.springframework.context:3.0.5.RELEASE'
+    implementation 'org.springframework:org.springframework.core:3.0.5.RELEASE'
+    implementation 'org.apache.commons:org.apache.commons.cli:1.0.0'
+    implementation 'org.apache.commons:org.apache.commons.vfs:20100409'
+    implementation 'org.apache.ant:org.apache.ivy:2.0.0'
+    implementation 'com.caucho:com.caucho:3.0.13'
+    implementation 'org.mortbay.jetty:org.mortbay.jetty:5.1.15'
+    implementation 'logkit:logkit:2.0'
+    implementation 'javax.servlet:javax.servlet:2.4.0'
+    implementation 'eclipse:equinox:3.3'
+    implementation 'eclipse:equinox-bundles:3.3_2'
+    testImplementation project(path: ':com.zutubi.util', configuration: 'testOutput')
+    testImplementation project(path: ':com.zutubi.pulse.core', configuration: 'testOutput')
+    testImplementation 'org.junit:org.junit:4.8.2'
+    testImplementation 'org.mockito:org.mockito:1.5.0'
+    testImplementation 'org.hamcrest:org.hamcrest:1.3'
+}
+
+test {
+    // Mockito 1.5.0's global sequence number counter conflicts with Gradle's
+    // classloader isolation model. These tests pass in the Ant build.
+    exclude '**/RecipeCleanupTest*'
+}
+
+// Expose test classes for use by other subprojects
+task testJar(type: Jar, dependsOn: testClasses) {
+    archiveClassifier = 'tests'
+    from sourceSets.test.output
+}
+
+configurations {
+    testOutput
+}
+
+artifacts {
+    testOutput testJar
+}
