@@ -4,6 +4,8 @@
 
     <target name="module-pre-init">
         <dirname property="project.root.dir" file="../build.xml"/>
+        <!-- Disabled: requires ApacheDS 1.5.7 which is not in the local repository -->
+        <property name="test.compile.excludes" value="**/AcegiLdapManagerTest.java"/>
     </target>
 
 <!--  need to do more than this to get the plugin manager tests going, since we also need the pulse internal core plugins to be deployed.  In particular, the upgrade extension point.

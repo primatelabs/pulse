@@ -134,8 +134,11 @@
                 <exclude name="**/LocalBuildTest.java"/>
                 <exclude name="**/PostProcessCommandTest.java"/>
                 <exclude name="**/*Perforce*Test*"/>
+                <exclude name="**/AcegiLdapManagerTest*"/>
             </fileset>
         </path>
+
+        <property name="test.compile.excludes" value=""/>
 
         <patternset id="release.excludes">
             <exclude name="**/LicenseEncoder*"/>
@@ -238,7 +241,8 @@
             </and>
             <then>
                 <retrieve-dependencies dest="${build.lib.dir}" conf="test"/>
-                <javac release="8" destdir="${test.classes.dir}" debug="true">
+                <javac release="8" destdir="${test.classes.dir}" debug="true"
+                       excludes="${test.compile.excludes}">
                     <classpath refid="lib.path"/>
                     <classpath location="${classes.dir}"/>
                     <src refid="test.paths"/>
