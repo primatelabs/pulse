@@ -41,23 +41,18 @@ repositories {
 dependencies {
     implementation project(':com.zutubi.util')
     implementation project(':com.zutubi.i18n')
+    implementation project(':com.zutubi.validation')
     implementation project(':com.zutubi.validation.annotations')
-    implementation 'com.opensymphony.xwork:com.opensymphony.xwork:1.2.3'
-    implementation 'javax.mail:javax.mail:1.4.0'
+    implementation project(':com.zutubi.tove.annotations')
+    implementation 'com.google:com.google.guava:18.0'
+    implementation 'zutubi:events:3.0.2'
+    implementation 'nu.xom:nu.xom:20111125'
+    implementation 'org.springframework.security:org.springframework.security.core:3.0.5.RELEASE'
+    implementation 'org.springframework.security:org.springframework.security.acls:3.0.5.RELEASE'
+    implementation 'org.springframework:org.springframework.ldap:1.3.0.RELEASE'
     testImplementation project(path: ':com.zutubi.util', configuration: 'testOutput')
+    testImplementation project(path: ':com.zutubi.validation', configuration: 'testOutput')
     testImplementation 'org.junit:org.junit:4.8.2'
-}
-
-// Expose test classes (e.g. FakeValidationContext) for use by other subprojects
-task testJar(type: Jar, dependsOn: testClasses) {
-    archiveClassifier = 'tests'
-    from sourceSets.test.output
-}
-
-configurations {
-    testOutput
-}
-
-artifacts {
-    testOutput testJar
+    testImplementation 'org.mockito:org.mockito:1.5.0'
+    testImplementation 'org.hamcrest:org.hamcrest:1.3'
 }
