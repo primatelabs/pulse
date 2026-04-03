@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+}
+
+group = 'zutubi'
+version = '2.7.0-dev'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+sourceSets {
+    main {
+        java { srcDirs = ['src/java'] }
+        resources {
+            srcDirs = ['src/java']
+            exclude '**/*.java'
+        }
+    }
+    test {
+        java { srcDirs = ['src/test'] }
+        resources {
+            srcDirs = ['src/test']
+            exclude '**/*.java'
+        }
+    }
+}
+
+repositories {
+    ivy {
+        url = uri("${rootProject.projectDir}/repository")
+        patternLayout {
+            ivy '[organisation]/[module]/ivy-[revision].xml'
+            artifact '[organisation]/[module]/jars/[artifact]-[revision].[ext]'
+        }
+        metadataSources { ivyDescriptor() }
+    }
+}
+
+dependencies {
+    implementation project(':com.zutubi.util')
+    implementation project(':com.zutubi.i18n')
+    implementation project(':com.zutubi.validation.annotations')
+    implementation 'com.opensymphony.xwork:com.opensymphony.xwork:1.2.3'
+    implementation 'javax.mail:javax.mail:1.4.0'
+    testImplementation project(path: ':com.zutubi.util', configuration: 'testOutput')
+    testImplementation 'org.junit:org.junit:4.8.2'
+}
